@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Internet According to Oz</title>
+<style>
+:root{
+  --navy:#253a54;
+  --navy2:#324b69;
+  --ink:#203047;
+  --muted:#667892;
+  --line:#d7deea;
+  --paper:#eef2f8;
+  --soft:#f3f5fb;
+  --white:#ffffff;
+  --blue:#4e86d8;
+  --green:#34a06e;
+  --red:#df5a4f;
+  --gold:#efc24f;
+  --purple:#8f79d8;
+  --shadow:0 12px 30px rgba(33,53,82,.10);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at top left, #f7dfe5 0, #f7dfe5 14%, transparent 15%),
+    linear-gradient(180deg,#f5f0f6 0%, #eef3f8 32%, #edf2f8 100%);
+  color:var(--ink);
+  font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+main{max-width:1180px;margin:auto;padding:22px}
+header{
+  display:flex;justify-content:space-between;gap:20px;align-items:center;
+  background:var(--navy);
+  color:white;
+  padding:18px 22px;
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  margin-bottom:16px;
+}
+.brand{display:flex;align-items:center;gap:16px}
+.logo{
+  width:62px;height:62px;border-radius:16px;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);font-size:30px;font-weight:900;
+  box-shadow:inset 0 0 0 2px rgba(0,0,0,.05);overflow:hidden
+}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
+h1{font-size:34px;letter-spacing:-1px;margin:0;color:white;line-height:1}
+h2{font-size:29px;line-height:1.15;margin:0 0 14px;color:var(--navy)}
+h3{margin:22px 0 10px;color:var(--navy2)}
+p{margin:8px 0 16px}
+.muted{color:#d8e0ed}
+.subtitle{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#dbe3f0;font-weight:700}
+.tag{
+  display:inline-block;
+  font-size:12px;text-transform:uppercase;letter-spacing:.14em;
+  color:white;background:var(--purple);font-weight:800;
+  padding:7px 12px;border-radius:999px;margin-bottom:14px
+}
+.card{
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--shadow)
+}
+.note{
+  background:linear-gradient(180deg,#eef4ff 0%, #f6f8ff 100%);
+  border:1px solid #d6e2fb;
+  border-radius:16px;padding:14px 16px;margin:16px 0
+}
+.paper{
+  background:#fffdf5;
+  border:2px dashed #e0c86d;
+  border-radius:16px;padding:16px;margin:16px 0
+}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+nav button{
+  border:0;border-radius:14px;padding:10px 14px;
+  color:white;font-size:12px;font-weight:800;
+  box-shadow:0 4px 0 rgba(0,0,0,.10);
+  cursor:pointer
+}
+nav button:nth-child(6n+1){background:var(--green)}
+nav button:nth-child(6n+2){background:var(--red)}
+nav button:nth-child(6n+3){background:var(--blue)}
+nav button:nth-child(6n+4){background:var(--gold);color:#483200}
+nav button:nth-child(6n+5){background:var(--purple)}
+nav button:nth-child(6n+6){background:#5f6f89}
+nav button[aria-current="step"]{
+  outline:3px solid #1d2d44;
+  transform:translateY(1px)
+}
+button,a.launch{
+  border:0;border-radius:14px;background:var(--blue);color:white;
+  padding:11px 16px;font-weight:800;text-decoration:none;display:inline-block;cursor:pointer;
+  box-shadow:0 4px 0 rgba(0,0,0,.12)
+}
+button.secondary{background:#e7edf6;color:var(--ink);box-shadow:none}
+button:disabled{opacity:.45;cursor:not-allowed}
+textarea,input,select{
+  font:inherit;border:1px solid #b8c5d8;border-radius:12px;padding:10px 12px;
+  background:#fbfcff;color:var(--ink)
+}
+textarea,input{width:100%}
+select{width:100%}
+textarea{min-height:95px;resize:vertical}
+textarea:focus,input:focus,select:focus{
+  outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(78,134,216,.18)
+}
+label{display:block;font-weight:750;margin:18px 0 7px}
+.footer{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  margin-top:26px;flex-wrap:wrap;padding-top:6px
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.diagram{
+  background:linear-gradient(180deg,#f8fbff 0%, #f3f7fd 100%);
+  border:1px solid var(--line);border-radius:18px;padding:20px;margin:16px 0
+}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center}
+.node{
+  background:white;border:2px solid #b8c6db;border-radius:14px;padding:12px 14px;
+  min-width:112px;font-weight:800;box-shadow:0 3px 0 rgba(0,0,0,.05)
+}
+.arrow{font-size:24px;color:var(--muted)}
+.prompt{
+  border-left:6px solid var(--purple);
+  background:#faf7ff;
+  border-radius:12px;
+  padding:14px 16px;margin:18px 0
+}
+.checks label{
+  font-weight:500;margin:8px 0;background:#f7f9fd;border:1px solid #e2e8f2;
+  border-radius:12px;padding:10px 12px
+}
+.checks input{width:auto;margin-right:8px}
+.explore{border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
+.explore h3{margin-top:0}
+.badge{
+  display:inline-block;background:var(--gold);color:#4a3800;
+  padding:5px 10px;border-radius:999px;font-size:12px;font-weight:900
+}
+section[hidden]{display:none}
+.status{
+  font-size:13px;color:#203047;background:#f6fbf8;border-radius:999px;
+  padding:9px 14px;font-weight:800;white-space:nowrap
+}
+@media(max-width:860px){
+  .grid2{grid-template-columns:1fr}
+  main{padding:14px}
+  .card{padding:18px}
+  header{padding:16px;align-items:flex-start}
+  .brand{align-items:flex-start}
+  h1{font-size:30px}
+}
+
+.gate{margin-top:20px;background:#fff7df;border:1px solid #ecd48b;border-radius:16px;padding:16px}
+.gate p{margin:5px 0 12px;color:#6d5a2c}
+.gate-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.gate-row input{flex:1;min-width:190px}
+.gate-feedback{font-size:13px;font-weight:800;margin-top:8px;color:#8b4c00}
+
+</style>
+<style>
+.net{width:100%;max-height:200px}.bits{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0}.bit{font-size:25px;min-width:54px;padding:14px 0;box-shadow:none}.bit.off{background:#cbd4e2;color:#253a54}.bit.on{background:#efc24f;color:#2f270e}.bitread{font-family:monospace;text-align:center;font-size:19px;font-weight:800}.packetrow{display:none;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}.packetrow.visible{display:flex}.mini-packet{min-width:95px;padding:13px;background:#eef4ff;border:2px solid #7aa6e8;border-radius:14px;display:flex;flex-direction:column;gap:2px;align-items:center}.mini-packet small{font-weight:700;color:#5e708b}.mini-packet strong{font-size:23px;color:#253a54}.mini-packet.received{background:#effaf3;border-color:#34a06e}.mini-packet.missing{background:#fff0ed;border:2px dashed #df5a4f}.word{font-size:28px;font-weight:900;letter-spacing:.12em;margin:14px}.softline{font-size:13px;color:#667892;margin:12px 0 0}.anatomy{display:grid;grid-template-columns:1fr 1fr;gap:10px}.anatomy div{border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}.anatomy b{font-size:13px;letter-spacing:.12em}.anatomy span{font-size:20px;font-weight:800}.a-from{background:#e3efff}.a-to{background:#e8f7ee}.a-order{background:#fff2ce}.a-data{background:#efeaff}#routeViz{width:100%;max-height:275px}ol li{margin:10px 0}@media print{nav,.footer,header,.tag,#download,#printBtn{display:none!important}section[hidden]{display:block!important}section{break-after:page}body{background:white}main{max-width:none}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand">
+    <div class="logo"><img src="oz_internet_logo.png" alt="Oz logo"></div>
+    <div>
+      <h1>the internet according to oz</h1>
+      <div class="subtitle">sit. stay. site.</div>
+      <div class="muted">Day 3: Data, Packets & Routing</div>
+    </div>
+  </div>
+  <div class="status" id="saveState">Autosave ready</div>
+</header>
+
+<nav id="nav"></nav>
+
+<div class="card">
+<div class="tag" id="tag"></div>
+
+
+<section data-page="0"><h2>Do Now: Review</h2><div class="note"><b>Before we begin:</b> Think back to networks, connections, and routing. Answer these on today's worksheet.</div>
+<div class="prompt"><b>1. Networks:</b> What are two physical ways that networks are connected to form the Internet?</div>
+<div class="prompt"><b>2. Connections:</b> What is one possible path an email might take if you sent it to me right now from inside the classroom?</div>
+<div class="prompt"><b>3. Routing:</b> How does a router decide which path to send data along? What information does it need to consider or calculate before making that decision?</div>
+<div class="diagram"><b>Remember: a network is connections between devices.</b><svg class="net" viewBox="0 0 600 190" role="img" aria-label="Network of computers connected by routers"><path d="M90 92 L260 45 L445 93 L260 145 L90 92 M260 45 L260 145 M260 45 L445 93" stroke="#9aacc7" stroke-width="5" fill="none"/><g fill="#fff" stroke="#4e86d8" stroke-width="5"><circle cx="90" cy="92" r="26"/><circle cx="260" cy="45" r="26"/><circle cx="260" cy="145" r="26"/><circle cx="445" cy="93" r="26"/></g><g font-size="16" fill="#253a54" text-anchor="middle" font-weight="bold"><text x="90" y="98">A</text><text x="260" y="51">R1</text><text x="260" y="151">R2</text><text x="445" y="99">B</text></g></svg></div></section>
+<section data-page="1" hidden><h2>Data: What Are We Sending?</h2><div class="note">Pictures, music, text, videos, games, and websites look different to us. Inside a computer, they are all represented as <b>data</b>.</div>
+<p>Computers represent digital information using <b>binary</b>: patterns of <b>0s and 1s</b>. Programs interpret that data to show us pictures, play music, and display webpages.</p>
+<div class="diagram"><h3 style="margin-top:0">Try it: Binary switches</h3><p>Click the switches to change the pattern. Each is one <b>bit</b>, either 0 or 1.</p><div class="bits" id="bits"></div><p class="bitread" id="bitread">Pattern: 00000000</p><div class="flow"><div class="node">0 = OFF</div><div class="node">1 = ON</div><div class="node">Patterns = DATA</div></div></div>
+<h3>Follow Along</h3><label>1. What two digits make up binary?</label><input data-key="data1" placeholder="Type your answer"><label>2. Name three kinds of information computers can represent using binary.</label><input data-key="data2" placeholder="Type your answer"><label>3. What does a receiving device do with the data it receives?</label><input data-key="data3" placeholder="Type your answer">
+<div class="prompt"><b>Think &amp; Respond (90 seconds):</b> If a photograph and a song are both represented using 0s and 1s, what makes one appear as a picture and the other play as sound?</div><textarea data-key="dataThink" placeholder="Write your thinking here..."></textarea></section>
+<section data-page="2" hidden><h2>Packets: Breaking It Down</h2><p>Even a short sentence can take lots of 0s and 1s to represent. Sending everything as one giant chunk can cause problems: if something goes wrong, a lot might need to be sent again, and big transmissions occupy network resources.</p><div class="note"><b>Solution:</b> Break information into smaller pieces called <b>packets</b>, send the pieces through the network, and put the information back together when it arrives.</div>
+<div class="diagram" style="text-align:center"><h3 style="margin-top:0">Watch MEATBALL become four packets</h3><div class="word" id="wholeWord">MEATBALL</div><button type="button" id="splitBtn">Split into packets ↓</button><div class="packetrow" id="splitRow"><div class="mini-packet"><small>1 of 4</small><strong>ME</strong></div><div class="mini-packet"><small>2 of 4</small><strong>AT</strong></div><div class="mini-packet"><small>3 of 4</small><strong>BA</strong></div><div class="mini-packet"><small>4 of 4</small><strong>LL</strong></div></div><p class="softline">Simplified classroom model: real packets contain additional information.</p></div>
+<h3>Follow Along</h3><label>1. What is a packet?</label><input data-key="pack1"><label>2. Name two problems that might happen if we sent all our data as one enormous piece.</label><input data-key="pack2"><label>3. What happens to the data after its packets arrive?</label><input data-key="pack3">
+<div class="prompt"><b>Think &amp; Respond (90 seconds):</b> Why might breaking information into smaller packets make the Internet more reliable when something goes wrong?</div><textarea data-key="packThink"></textarea></section>
+<section data-page="3" hidden><h2>Routing: Finding the Way</h2><p>Packets have a destination, but they don't carry a complete map of the route ahead. <b>Routers</b> use information about network paths to decide which connection to forward a packet along next.</p><div class="note"><b>Think of a road trip:</b> You know where you want to go, but ask for directions at each gas station. Different trips might take different roads and arrive at different times.</div>
+<div class="diagram"><h3 style="margin-top:0">Watch four packets travel</h3><p>Click Send. Each colored packet follows a different <i>example</i> route.</p><svg id="routeViz" viewBox="0 0 700 275" role="img" aria-label="Packets taking different routes between computer A and computer B"><g stroke="#b6c5da" stroke-width="7" fill="none" stroke-linecap="round"><path d="M68 139 L195 38 L505 38 L632 139"/><path d="M68 139 L195 105 L505 105 L632 139"/><path d="M68 139 L195 173 L505 173 L632 139"/><path d="M68 139 L195 238 L505 238 L632 139"/></g><g fill="white" stroke="#6c8db6" stroke-width="4"><circle cx="68" cy="139" r="30"/><circle cx="632" cy="139" r="30"/></g><g font-size="16" font-weight="bold" text-anchor="middle" fill="#253a54"><text x="68" y="145">A</text><text x="632" y="145">B</text></g><g id="routeDots"></g></svg><button type="button" id="sendBtn">Send packets ▶</button><p id="routeResult" aria-live="polite" class="softline">Ready to send from Computer A to Computer B.</p></div>
+<h3>Follow Along</h3><label>1. Do packets know their entire route before being sent?</label><input data-key="route1"><label>2. What device decides where a packet should go next?</label><input data-key="route2"><label>3. Can two packets going to the same destination take different routes?</label><input data-key="route3">
+<div class="prompt"><b>Think &amp; Respond (90 seconds):</b> If two packets leave the same computer at the same time but take different routes, will they necessarily arrive at the same time? Why or why not?</div><textarea data-key="routeThink"></textarea></section>
+<section data-page="4" hidden><h2>Packet Anatomy: What's Inside?</h2><p>A real packet can contain a lot of technical information. You do <b>not</b> need to memorize every field. In our simplified classroom model, focus on four concepts:</p>
+<div class="diagram"><div class="anatomy"><div class="a-from"><b>FROM</b><span>Computer A</span></div><div class="a-to"><b>TO</b><span>Computer B</span></div><div class="a-order"><b>ORDER</b><span>3 of 4</span></div><div class="a-data"><b>DATA</b><span>BA</span></div></div><p class="softline">FROM = sender • TO = destination • ORDER = where it belongs • DATA = message content</p></div>
+<div class="note">Real network protocols spread these jobs across different headers and layers. Packet ordering in particular may be handled by TCP. The four boxes above are a teaching model.</div>
+<h3>Follow Along</h3><label>1. What tells the router where a packet is going?</label><input data-key="anat1"><label>2. What helps the receiver put our message back together?</label><input data-key="anat2"><label>3. What part contains the actual information being sent?</label><input data-key="anat3"><div class="prompt"><b>Think &amp; Respond:</b> Why does a packet need information besides the data itself?</div><textarea data-key="anatThink"></textarea></section>
+<section data-page="5" hidden><h2>Paper Activity: You Are the Router</h2><div class="paper"><b>Complete this part on the paper worksheet your teacher hands out.</b></div><p><b>Mission:</b> Send MEATBALL from Computer A to Computer B using four numbered packets.</p><ol><li>Split MEATBALL into <b>four</b> packets.</li><li>Choose a <b>different route</b> for each packet on the worksheet's network map.</li><li>Record the routers visited on each route.</li><li>Add the connection costs to find each route's total.</li><li>Put the packets back together at their destination.</li></ol><div class="note">Real packets don't have to take different routes. That's a special rule for our classroom challenge.</div><div class="prompt"><b>Reflection:</b> Why does the receiver need information about the packets beyond the pieces of the message?</div><textarea data-key="activityReflection" placeholder="Optional: record your reflection here too"></textarea></section>
+<section data-page="6" hidden><h2>Exit Ticket: The Missing Packet</h2><div class="prompt"><b>Scenario:</b> A message is divided into four packets and sent across the Internet. During transmission, a connection breaks. Only packets 1, 2, and 4 arrive.</div><div class="packetrow visible"><div class="mini-packet received"><small>Packet</small><strong>1 ✓</strong></div><div class="mini-packet received"><small>Packet</small><strong>2 ✓</strong></div><div class="mini-packet missing"><small>Packet</small><strong>3 ?</strong></div><div class="mini-packet received"><small>Packet</small><strong>4 ✓</strong></div></div>
+<label>1. REVIEW: How can the receiving computer tell that part of the message is missing? What information does it have that tells it something is wrong?</label><textarea data-key="exit1"></textarea>
+<label>2. REFLECT: The receiving computer knows something is missing, but the sending computer might not. Why is this a problem?</label><textarea data-key="exit2"></textarea>
+<label>3. PREDICT: What should the two computers do next? Describe how they could communicate to make sure the receiver gets the complete message.</label><textarea data-key="exit3"></textarea></section>
+<section data-page="7" hidden><h2>Submit &amp; Save</h2><p>Enter your name and class period, then submit your answers. Everything also autosaves in this browser.</p><label>Your name</label><input data-key="name" id="name" placeholder="First and last name"><label>Class period</label><select data-key="period" id="period"><option value="">Select period</option><option value="1">Period 1</option><option value="2">Period 2</option><option value="3">Period 3</option><option value="4">Period 4</option><option value="5">Period 5</option><option value="6">Period 6</option><option value="7">Period 7</option><option value="8">Period 8</option><option value="9">Period 9</option></select><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button type="button" id="submitFirebase">Submit to Firebase</button><button type="button" id="download" class="secondary">Download backup (.txt)</button><button type="button" class="secondary" id="printBtn">Print / Save as PDF</button></div><p id="submitStatus" role="status" aria-live="polite" class="note">Not submitted yet. Keep a backup if submission fails.</p></section>
+</div>
+<div class="footer">
+  <button class="secondary" id="back">← Back</button>
+  <span class="muted" id="progress"></span>
+  <button id="next">Continue →</button>
+</div>
+</div>
+</main>
+
+<script>
+const KEY='oz-packets-day3-v1';
+const names=['Do Now','Data','Packets','Routing','Packet Anatomy','Paper Activity','Exit Ticket','Submit'];
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let state={page:0,answers:{},bits:[0,0,0,0,0,0,0,0]};
+try{let x=JSON.parse(localStorage.getItem(KEY));if(x)state={...state,...x}}catch(e){}
+function save(){ $$('[data-key]').forEach(e=>state.answers[e.dataset.key]=e.value);localStorage.setItem(KEY,JSON.stringify(state));$('#saveState').textContent='Saved in this browser';}
+function render(){
+ $$('section[data-page]').forEach((s,i)=>s.hidden=i!==state.page);
+ $('#tag').textContent='Step '+(state.page+1)+' / '+names.length;
+ $('#progress').textContent=names[state.page];$('#back').disabled=state.page===0;$('#next').hidden=state.page===names.length-1;
+ $('#nav').innerHTML='';names.forEach((name,i)=>{const b=document.createElement('button');b.textContent=(i+1)+' '+name;if(i===state.page)b.setAttribute('aria-current','step');b.onclick=()=>go(i);$('#nav').append(b)});
+ $$('[data-key]').forEach(e=>e.value=state.answers[e.dataset.key]||'');
+}
+function go(i){save();state.page=Math.max(0,Math.min(names.length-1,i));render();window.scrollTo({top:0,behavior:'smooth'})}
+$$('[data-key]').forEach(e=>e.addEventListener('input',save));$('#back').onclick=()=>go(state.page-1);$('#next').onclick=()=>go(state.page+1);
+function renderBits(){const parent=$('#bits');parent.innerHTML='';state.bits.forEach((b,i)=>{let btn=document.createElement('button');btn.className='bit '+(b?'on':'off');btn.type='button';btn.textContent=b?'1':'0';btn.setAttribute('aria-label','Bit '+(i+1)+', '+(b?'on':'off'));btn.onclick=()=>{state.bits[i]=1-state.bits[i];renderBits();save()};parent.append(btn)});$('#bitread').textContent='Pattern: '+state.bits.join('')}
+renderBits();$('#splitBtn').onclick=()=>{let el=$('#splitRow');el.classList.toggle('visible');$('#splitBtn').textContent=el.classList.contains('visible')?'Put message back together ↑':'Split into packets ↓'};
+let running=false;const colors=['#df5a4f','#4e86d8','#34a06e','#8f79d8'];
+$('#sendBtn').onclick=()=>{if(running)return;running=true;$('#sendBtn').disabled=true;$('#routeResult').textContent='Packets are on the move...';let grp=$('#routeDots');grp.innerHTML='';const ys=[38,105,173,238],durations=[2400,1700,2900,2100];let finished=0;
+colors.forEach((color,i)=>{let path=[[68,139],[195,ys[i]],[505,ys[i]],[632,139]],dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('r','11');dot.setAttribute('fill',color);dot.setAttribute('stroke','#fff');dot.setAttribute('stroke-width','3');grp.append(dot);let start=performance.now();function frame(now){let t=Math.min(1,(now-start)/durations[i]);let segment=Math.min(2,Math.floor(t*3)),f=t*3-segment,a=path[segment],b=path[segment+1];dot.setAttribute('cx',a[0]+(b[0]-a[0])*f);dot.setAttribute('cy',a[1]+(b[1]-a[1])*f);if(t<1)requestAnimationFrame(frame);else {finished++;$('#routeResult').textContent='Arrived: '+finished+' / 4 packets';if(finished===4){$('#routeResult').textContent='All four packets arrived! They did not necessarily arrive in order.';running=false;$('#sendBtn').disabled=false;}}}requestAnimationFrame(frame)});
+};
+$('#download').onclick=()=>{save();let text='THE INTERNET ACCORDING TO OZ — DATA & PACKETS\n\n'+Object.entries(state.answers).map(([k,v])=>k.toUpperCase()+'\n'+v).join('\n\n');let url=URL.createObjectURL(new Blob([text],{type:'text/plain'}));let a=document.createElement('a');a.href=url;a.download=((state.answers.name||'student').replace(/[^a-z0-9_-]/gi,'_'))+'_packets_day3.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+$('#printBtn').onclick=()=>window.print();render();save();
+</script>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+const firebaseConfig = {
+  apiKey: 'AIzaSyCaL51rOyOdbsTD0o56JxYB9rag0gvAFWo',
+  authDomain: 'iato3-4f9c7.firebaseapp.com',
+  projectId: 'iato3-4f9c7',
+  storageBucket: 'iato3-4f9c7.firebasestorage.app',
+  messagingSenderId: '551304781498',
+  appId: '1:551304781498:web:70774a011cad66af11ac83'
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const submitButton = document.querySelector('#submitFirebase');
+const status = document.querySelector('#submitStatus');
+submitButton.addEventListener('click', async () => {
+  const answers = Object.fromEntries([...document.querySelectorAll('[data-key]')].map(el => [el.dataset.key, el.value]));
+  const name = (answers.name || '').trim();
+  const period = (answers.period || '').trim();
+  if (!name || !period) { status.textContent = 'Enter your name and class period before submitting.'; return; }
+  submitButton.disabled = true;
+  status.textContent = 'Submitting...';
+  try {
+    const doc = await addDoc(collection(db, 'packet_routing_day3'), {
+      studentName: name,
+      classPeriod: period,
+      lesson: 'Internet According to Oz — Day 3: Data and Packets',
+      answers,
+      submittedAt: serverTimestamp()
+    });
+    status.textContent = 'Submitted successfully! Confirmation: ' + doc.id;
+  } catch (err) {
+    console.error('Firebase submission failed:', err);
+    status.textContent = 'Submission failed (' + (err.code || 'connection error') + '). Your answers are still saved in this browser. Download a backup and tell your teacher.';
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
